@@ -43,15 +43,4 @@ interface MessageInterface extends TextInterface, ConsoleAwareInterface
      * @return RendererInterface
      */
     public function getRenderer();
-
-    /**
-     * @param string $template
-     * @return $this
-     */
-    public function setTemplate($template);
-
-    /**
-     * @return string
-     */
-    public function getTemplate();
 }

@@ -16,7 +16,7 @@ class Message implements MessageInterface
 
     use ConsoleAwareTrait;
 
-    protected $template = '';
+    protected $template = null;
     protected $args = [];
     protected $renderer;
 
@@ -31,11 +31,13 @@ class Message implements MessageInterface
      */
     public function show($message = null, $context = null)
     {
-        $template = (is_null($message)) ? $this->getTemplate() : $message;
-        $context = (is_null($context)) ? $this->getArgs() : (array)$context;
-        $context['payload'] = $message;
-
-        $this->getConsole()->writeLine($this->getRenderer()->render($template, $context));
+        if (is_string($message) && !empty($message)) {
+            $context = (is_null($context)) ? $this->getArgs() : (array)$context;
+            $message = $this->getRenderer()->render($message, $context);
+            if (is_string($message) && !empty($message)) {
+                $this->getConsole()->writeLine($message);
+            }
+        }
     }
 
     /**
@@ -72,23 +74,5 @@ class Message implements MessageInterface
     public function getRenderer()
     {
         return $this->renderer;
-    }
-
-    /**
-     * @param string $template
-     * @return $this
-     */
-    public function setTemplate($template)
-    {
-        $this->template = $template;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTemplate()
-    {
-        return $this->template;
     }
 }
