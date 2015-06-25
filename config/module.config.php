@@ -19,6 +19,11 @@ return [
                         'danger'    => ['Eoko\Console\Helper\MessageHelper', 'danger'],
                         'success'   => ['Eoko\Console\Helper\MessageHelper', 'success'],
                         'comment'   => ['Eoko\Console\Helper\MessageHelper', 'comment'],
+                        'verbose'   => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
+                        'v'         => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
+                        'vv'        => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
+                        'vvv'       => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
+                        'vvvv'      => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
                     ]
                 ]
             ]
