@@ -62,7 +62,7 @@ In CLI, inside any controller you have access to a new plugin `message`.
 
 For styling, we have pre-register formatter on shortcode.
  
- ```
+ ```PHP
  $this->message()->show('text');
  
  $this->message()->notice('notice');
@@ -82,19 +82,23 @@ For styling, we have pre-register formatter on shortcode.
  
  
  $this->message()->show('[msg fg="white" bg="red"]kkkkk[/msg]');
- ```
- 
- ### Output text with variable
  
  ```
+
+### Output text with variable
+ 
+ ```PHP
+ 
  $this->message()->show('[msg fg="white" bg="red"]{{text}}[/msg]', ['text' => 'My custom text']);
  $this->message()->show('[warn]{{msg}}[/warn]', ['msg' => 'Warn message']);
+ 
  ```
 
 
 ## Quick Example
 
 ```PHP
+
 class IndexController extends AbstractActionController
 {
     public function indexAction()
@@ -110,6 +114,7 @@ class IndexController extends AbstractActionController
         $this->message()->show('[verbose verbosity="v"][v]this is v[/v] not [vv]vv[/vv][/verbose]');
     }
 }
+
 ```
 
 
