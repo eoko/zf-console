@@ -32,7 +32,25 @@ Output and Prompting in Console by using pseudo-language and a very flexible str
         [option value="B"]A[/option]
         [option]C[/option]
    [/select]');
-   // [TODO] should create a select and prepend a question
+   // [TODO / Soon] should create a select and prepend a question
+   
+   $this->prompt('
+           [prompt]
+               simple
+               [question default="mydefault"]First Question : [/question]
+               [question id="wolo"]Second Question : [/question]
+               [question id="bou"]Third Question : [/question]
+           [/prompt]
+           [confirm id="confirm1"]My question confirm[/confirm]
+           [confirm  id="confirm2" default="n"]My question confirm2[/confirm]
+           [prompt]
+               simple2
+               [question]inner2[/question]
+               [question id="wolo"]inner3[/question]
+               [question id="bou"]inner3[/question]
+           [/prompt]
+    ');
+   // [TODO / Soon] should create selects, questions, confirm...
    
 ```
 
