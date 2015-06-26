@@ -16,7 +16,7 @@ Output and Prompting in Console by using pseudo-language and a very flexible str
    // [DONE] should output red text and if console is verbose, add the vvvv text.
    // [TODO] get verbosity from outside
    
-   $this->msg('Hello {{username}} !', ['username' => 'merlin]);
+   $this->msg('Hello {{username}} !', ['username' => 'merlin']);
    // [DONE] should output "Hello merlin"
    
    $this->msg('[notice]Hello {{username}} ![/notice]');
