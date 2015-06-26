@@ -64,13 +64,16 @@ For styling, we have pre-register formatter on shortcode.
  
  
  $this->message()->show('[msg fg="white" bg="red"]kkkkk[/msg]');
- ```
- 
- ### Output text with variable
  
  ```
+
+### Output text with variable
+ 
+ ```
+ 
  $this->message()->show('[msg fg="white" bg="red"]{{text}}[/msg]', ['text' => 'My custom text']);
  $this->message()->show('[warn]{{msg}}[/warn]', ['msg' => 'Warn message']);
+ 
  ```
 
 
