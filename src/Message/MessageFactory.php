@@ -9,6 +9,7 @@
 namespace Eoko\Console\Message;
 
 use Eoko\Console\Formatter\FormatterInterface;
+use Eoko\Console\Formatter\SimpleFormatter;
 use Eoko\Console\Renderer\SimpleRenderer;
 use Zend\Console\Console;
 use Zend\ServiceManager\FactoryInterface;
@@ -34,13 +35,11 @@ class MessageFactory implements FactoryInterface
 
         if (isset($config['eoko']['console']['formatter']['service'])) {
             $formatter = $serviceLocator->get($config['eoko']['console']['formatter']['service']);
-            /** @var FormatterInterface $formatter */
-            $renderer->setFormatter($formatter);
+        } else {
+            $formatter = new SimpleFormatter();
         }
 
-        /** @var Console $console */
-        $console = $serviceLocator->get('Console');
-        $message = new Message($renderer, $console);
+        $message = new Message($renderer, $formatter);
         return $message;
     }
 }

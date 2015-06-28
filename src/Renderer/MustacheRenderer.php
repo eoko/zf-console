@@ -17,32 +17,6 @@ class MustacheRenderer implements RendererInterface
     /** @var  EngineInterface */
     protected $engine;
 
-    /** @var  FormatterInterface */
-    protected $formatter;
-
-    public function __construct()
-    {
-        $this->formatter = new SimpleFormatter;
-    }
-
-    /**
-     * @param FormatterInterface $formatter
-     * @return $this
-     */
-    public function setFormatter(FormatterInterface $formatter)
-    {
-        $this->formatter = $formatter;
-        return $this;
-    }
-
-    /**
-     * @return FormatterInterface
-     */
-    public function getFormatter()
-    {
-        return $this->formatter;
-    }
-
     /**
      * @param EngineInterface $engine
      * @return $this
@@ -63,7 +37,6 @@ class MustacheRenderer implements RendererInterface
 
     public function render($template, $context = [])
     {
-        $template = $this->getEngine()->render($template, $context);
-        return $this->getFormatter()->format($template);
+        return $this->getEngine()->render($template, $context);
     }
 }

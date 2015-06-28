@@ -23,34 +23,6 @@ class MessagePlugin extends AbstractPlugin implements FactoryInterface
     }
 
     /**
-     * @todo message plugin should use pre-formatted text...
-     */
-    public function comment($message = null, $context = null)
-    {
-        $this->show('[comment]' . $message . '[/comment]', $context);
-    }
-
-    public function info($message = null, $context = null)
-    {
-        $this->show('[info]' . $message . '[/info]', $context);
-    }
-
-    public function success($message = null, $context = null)
-    {
-        $this->show('[success]' . $message . '[/success]', $context);
-    }
-
-    public function warn($message = null, $context = null)
-    {
-        $this->show('[warn]' . $message . '[/warn]', $context);
-    }
-
-    public function danger($message = null, $context = null)
-    {
-        $this->show('[warn]' . $message . '[/warn]', $context);
-    }
-
-    /**
      * Create service
      *
      * @todo clean, no class with factory integrated

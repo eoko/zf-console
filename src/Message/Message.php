@@ -19,10 +19,12 @@ class Message implements MessageInterface
     protected $template = null;
     protected $args = [];
     protected $renderer;
+    protected $formatter;
 
-    public function __construct($renderer, $console)
+    public function __construct($renderer, $formatter)
     {
-        $this->setRenderer($renderer, $console);
+        $this->setRenderer($renderer);
+        $this->setFormatter($formatter);
     }
 
     /**
@@ -34,6 +36,7 @@ class Message implements MessageInterface
         if (is_string($message) && !empty($message)) {
             $context = (is_null($context)) ? $this->getArgs() : (array)$context;
             $message = $this->getRenderer()->render($message, $context);
+            $message = $this->getFormatter()->format($message);
             if (is_string($message) && !empty($message)) {
                 $this->getConsole()->writeLine($message);
             }
@@ -75,4 +78,22 @@ class Message implements MessageInterface
     {
         return $this->renderer;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFormatter()
+    {
+        return $this->formatter;
+    }
+
+    /**
+     * @param mixed $formatter
+     */
+    public function setFormatter($formatter)
+    {
+        $this->formatter = $formatter;
+    }
+
+
 }

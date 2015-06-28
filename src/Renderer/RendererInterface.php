@@ -22,16 +22,5 @@ interface RendererInterface
 
     public function getEngine();
 
-    /**
-     * @param FormatterInterface $formatter
-     * @return $this
-     */
-    public function setFormatter(FormatterInterface $formatter);
-
-    /**
-     * @return FormatterInterface
-     */
-    public function getFormatter();
-
     public function render($template, $context = []);
 }

@@ -21,7 +21,8 @@
         "zendframework/zend-stdlib": "~2.5",
         "zendframework/zend-console": "~2.5",
         "mustache/mustache": "dev-master",
-        "mockery/mockery": "^1.0@dev"
+        "mockery/mockery": "^1.0@dev",
+        "thunderer/shortcode": "dev-master"
     },
 
     "minimum-stability": "dev",

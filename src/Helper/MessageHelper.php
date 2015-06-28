@@ -8,18 +8,20 @@
 
 namespace Eoko\Console\Helper;
 
+use Thunder\Shortcode\Shortcode;
+use Zend\Console\ColorInterface;
 use Zend\Console\Console;
 
 class MessageHelper
 {
-    const COLOR_VERBOSE = 'LIGHT_WHITE';
-    const COLOR_COMMENT = 'YELLOW';
-    const COLOR_DANGER = 'RED';
-    const COLOR_WARN = 'MAGENTA';
-    const COLOR_INFO = 'BLUE';
-    const COLOR_SUCCESS = 'GREEN';
 
-    public static $verbosity = 'v';
+    public static $mapShortcodeToColor = [
+        'warn' => ColorInterface::MAGENTA,
+        'comment' => ColorInterface::YELLOW,
+        'danger' => ColorInterface::RED,
+        'info' => ColorInterface::BLUE,
+        'success' => ColorInterface::GREEN,
+    ];
 
     public static function getColorCode($color = 'WHITE')
     {
@@ -27,10 +29,21 @@ class MessageHelper
         return defined($color) ? constant($color) : null;
     }
 
-    public static function msg($attributes, $content, $shortcodeName)
+    /**
+     * @param Shortcode $shortcode
+     * @return string
+     */
+    public static function msg($shortcode)
     {
+        $content = $shortcode->getContent();
+        $attributes = $shortcode->getParameters();
+
         $fgColor = (isset($attributes['fg'])) ? self::getColorCode($attributes['fg']) : null;
         $bgColor = (isset($attributes['bg'])) ? self::getColorCode($attributes['bg']) : null;
+
+        if(isset(self::$mapShortcodeToColor[$shortcode->getName()])) {
+            $fgColor = self::$mapShortcodeToColor[$shortcode->getName()];
+        }
 
         if (isset($attributes['show']) && (boolean)$attributes['show'] === false) {
             return '[hide]' . $content . '[/hide]';
@@ -39,51 +52,12 @@ class MessageHelper
         return Console::getInstance()->colorize($content, $fgColor, $bgColor);
     }
 
-    public static function bip($attributes, $content, $shortcodeName) {
+    public static function bip() {
         return "\x07";
-    }
-
-    public static function comment($attributes, $content, $shortcodeName)
-    {
-        return '[msg fg="' . self::COLOR_COMMENT . '"]' . $content . '[/msg]';
-    }
-
-    public static function danger($attributes, $content, $shortcodeName)
-    {
-        return '[msg fg="' . self::COLOR_DANGER . '"]' . $content . '[/msg]';
-    }
-
-    public static function warn($attributes, $content, $shortcodeName)
-    {
-        return '[msg fg="' . self::COLOR_WARN . '"]' . $content . '[/msg]';
-    }
-
-    public static function info($attributes, $content, $shortcodeName)
-    {
-        return '[msg fg="' . self::COLOR_INFO . '"]' . $content . '[/msg]';
-    }
-
-    public static function success($attributes, $content, $shortcodeName)
-    {
-        return '[msg fg="' . self::COLOR_SUCCESS . '"]' . $content . '[/msg]';
     }
 
     public static function hide()
     {
-        return;
-    }
-
-    public static function verbose($attributes, $content, $shortcodeName)
-    {
-        if ($shortcodeName === 'verbose' && isset($attributes['verbosity'])) {
-            self::$verbosity = $attributes['verbosity'];
-            return $content;
-        }
-
-        if (substr_count($shortcodeName, 'v', 0, min(4, strlen($shortcodeName))) <= strlen(self::$verbosity)) {
-            return $content;
-        }
-
         return;
     }
 }
