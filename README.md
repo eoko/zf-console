@@ -5,7 +5,7 @@
 
 ## Goals
 
-Output and Prompting in Console by using pseudo-language and a very flexible structure. For example :
+Output in Console by using pseudo-language and a very flexible structure. For example :
 
 ```PHP
 $this->warn('this is not cool');
