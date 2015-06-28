@@ -39,6 +39,10 @@ class MessageHelper
         return Console::getInstance()->colorize($content, $fgColor, $bgColor);
     }
 
+    public static function bip($attributes, $content, $shortcodeName) {
+        return "\x07";
+    }
+
     public static function comment($attributes, $content, $shortcodeName)
     {
         return '[msg fg="' . self::COLOR_COMMENT . '"]' . $content . '[/msg]';

@@ -9,10 +9,22 @@ return [
                 ],
             ],
             'renderer' => 'eoko.console.renderer.mustache',
+            'prompter' => [
+                'service' => 'eoko.console.prompter.shortcode',
+                'options' => [
+                    'tags' => [
+                        'prompt'    => ['Eoko\Console\Helper\PromptHelper', 'prompt'],
+                        'question'    => ['Eoko\Console\Helper\PromptHelper', 'question'],
+                        'confirm'    => ['Eoko\Console\Helper\PromptHelper', 'confirmation'],
+                        'line'      => ['Eoko\Console\Helper\PromptHelper', 'line'],
+                    ]
+                ]
+            ],
             'formatter' => [
                 'service' => 'eoko.console.formatter.shortcode',
                 'options' => [
                     'tags' => [
+                        'bip'       => ['Eoko\Console\Helper\MessageHelper', 'bip'],
                         'msg'       => ['Eoko\Console\Helper\MessageHelper', 'msg'],
                         'warn'      => ['Eoko\Console\Helper\MessageHelper', 'warn'],
                         'info'      => ['Eoko\Console\Helper\MessageHelper', 'info'],
@@ -23,7 +35,6 @@ return [
                         'v'         => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
                         'vv'        => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
                         'vvv'       => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
-                        'vvvv'      => ['Eoko\Console\Helper\MessageHelper', 'verbose'],
                     ]
                 ]
             ]
@@ -33,6 +44,7 @@ return [
         'factories' => [
             'eoko.console.message' => 'Eoko\Console\Message\MessageFactory',
             'eoko.console.formatter.shortcode' => 'Eoko\Console\Formatter\ShortCodeFormatterFactory',
+            'eoko.console.prompter.shortcode' => 'Eoko\Console\Prompter\ShortCodePrompterFactory',
             'eoko.console.renderer.mustache' => 'Eoko\Console\Engine\MustacheEngineFactory'
         ],
     ],
