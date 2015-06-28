@@ -10,6 +10,7 @@ namespace Eoko\ConsoleTest;
 
 use Eoko\Console\Engine\MustacheEngine;
 use Eoko\Console\Engine\MustacheEngineFactory;
+use Eoko\Console\Factory\BbcodeFormatterFactory;
 use Eoko\Console\Formatter\ShortCodeFormatterFactory;
 use Eoko\Console\Helper\MessageHelper;
 use Eoko\Console\Message\MessageFactory;
@@ -59,27 +60,27 @@ class MustacheRendererTest extends PHPUnit_Framework_TestCase
             'comment' => [[
                 'template' => '[comment]Comment from {{from}}[/comment]',
                 'values' => ['from' => 'my brain'],
-                'expected' => Console::getInstance()->colorize('Comment from my brain', MessageHelper::getColorCode(MessageHelper::COLOR_COMMENT)) . "\n"
+                'expected' => Console::getInstance()->colorize('Comment from my brain', MessageHelper::$mapShortcodeToColor['comment']) . "\n"
             ]],
             'danger' => [[
                 'template' => '[danger]Danger from {{from}}[/danger]',
                 'values' => ['from' => 'my brain'],
-                'expected' => Console::getInstance()->colorize('Danger from my brain', MessageHelper::getColorCode(MessageHelper::COLOR_DANGER)) . "\n"
+                'expected' => Console::getInstance()->colorize('Danger from my brain', MessageHelper::$mapShortcodeToColor['danger']) . "\n"
             ]],
             'warn' => [[
                 'template' => '[warn]Warning from {{from}}[/warn]',
                 'values' => ['from' => 'my brain'],
-                'expected' => Console::getInstance()->colorize('Warning from my brain', MessageHelper::getColorCode(MessageHelper::COLOR_WARN)) . "\n"
+                'expected' => Console::getInstance()->colorize('Warning from my brain', MessageHelper::$mapShortcodeToColor['warn']) . "\n"
             ]],
             'info' => [[
                 'template' => '[info]Info from {{from}}[/info]',
                 'values' => ['from' => 'my brain'],
-                'expected' => Console::getInstance()->colorize('Info from my brain', MessageHelper::getColorCode(MessageHelper::COLOR_INFO)) . "\n"
+                'expected' => Console::getInstance()->colorize('Info from my brain', MessageHelper::$mapShortcodeToColor['info']) . "\n"
             ]],
             'success' => [[
                 'template' => '[success]Success from {{from}}[/success]',
                 'values' => ['from' => 'my brain'],
-                'expected' => Console::getInstance()->colorize('Success from my brain', MessageHelper::getColorCode(MessageHelper::COLOR_SUCCESS)) . "\n"
+                'expected' => Console::getInstance()->colorize('Success from my brain', MessageHelper::$mapShortcodeToColor['success']) . "\n"
             ]],
         ];
     }
@@ -103,7 +104,7 @@ class MustacheRendererTest extends PHPUnit_Framework_TestCase
         $serviceManager = \Mockery::mock('Zend\ServiceManager\ServiceLocatorInterface');
         $serviceManager->shouldReceive('get')->with('Config')->andReturn(include(__DIR__ . '/../../config/module.config.php'));
         $serviceManager->shouldReceive('get')->with('Console')->andReturn(Console::getInstance());
-        $serviceManager->shouldReceive('get')->with("eoko.console.formatter.shortcode")->andReturn((new ShortCodeFormatterFactory())->createService($serviceManager));
+        $serviceManager->shouldReceive('get')->with("eoko.console.formatter.bbcode")->andReturn((new BbcodeFormatterFactory())->createService($serviceManager));
         $serviceManager->shouldReceive('get')->with("eoko.console.renderer.mustache")->andReturn((new MustacheEngineFactory())->createService($serviceManager));
 
         $renderer = (new MessageFactory($serviceManager))->createService($serviceManager);
