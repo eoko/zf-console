@@ -13,8 +13,8 @@ $this->warn('this is not cool');
 // [DONE] should output red text
 
 $this->msg('[warn]not cool again[vvvv] with very verbose text[/vvvv][/warn]');
-// [DONE] should output red text and if console is verbose, add the vvvv text.
-// [TODO] get verbosity from outside
+// [DONE] should output red text.
+// [TODO] get verbosity from outside and if console is verbose, add the vvvv text
 
 $this->msg('Hello {{username}} !', ['username' => 'merlin']);
 // [DONE] should output "Hello merlin"
@@ -22,40 +22,6 @@ $this->msg('Hello {{username}} !', ['username' => 'merlin']);
 $this->msg('[notice]Hello {{username}} ![/notice]');
 // [DONE] should output "Hello merlin" in blue
 
-$this->promt('[question required="true"]What do you think ?[/question]');
-// [TODO] should create a read line that is required
-
-$this->prompt(
-<<<HEREDOC
-    [select]
-        What do you want ?
-        [option value="A"]A[/option]
-        [option value="B"]A[/option]
-        [option]C[/option]
-    [/select]
-HEREDOC
-);
-// [TODO / Soon] should create a select and prepend a question
-
-$this->prompt(
-<<<HEREDOC
-       [prompt]
-           simple
-           [question default="mydefault"]First Question : [/question]
-           [question id="wolo"]Second Question : [/question]
-           [question id="bou"]Third Question : [/question]
-       [/prompt]
-       [confirm id="confirm1"]My question confirm[/confirm]
-       [confirm  id="confirm2" default="n"]My question confirm2[/confirm]
-       [prompt]
-           simple2
-           [question]inner2[/question]
-           [question id="wolo"]inner3[/question]
-           [question id="bou"]inner3[/question]
-       [/prompt]
-HEREDOC
-);
-// [TODO / Soon] should create selects, questions, confirm...
    
 ```
 
