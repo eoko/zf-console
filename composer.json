@@ -21,7 +21,6 @@
         "zendframework/zend-stdlib": "~2.5",
         "zendframework/zend-console": "~2.5",
         "mustache/mustache": "~2.8",
-        "mockery/mockery": "^1.0@dev",
         "thunderer/shortcode": "~0.3"
     },
 
@@ -50,6 +49,7 @@
         "zendframework/zend-json": "~2.5",
         "zendframework/zend-validator": "~2.5",
         "phpunit/phpunit": "^5.0@dev",
+        "mockery/mockery": "^0.9",
         "zendframework/zend-servicemanager": "^2.5@dev"
     }
 }
