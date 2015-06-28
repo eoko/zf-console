@@ -28,13 +28,6 @@
 
     "prefer-stable": true,
 
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.5-dev",
-            "dev-develop": "2.6-dev"
-        }
-    },
-
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\Console\\": "test/"
