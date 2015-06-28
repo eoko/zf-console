@@ -12,7 +12,6 @@ use Eoko\Console\Formatter\BbcodeFormatter;
 use Thunder\Shortcode\Extractor;
 use Thunder\Shortcode\Parser;
 use Thunder\Shortcode\Processor;
-use Thunder\Shortcode\ShortcodeFacade;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -35,11 +34,11 @@ class BbcodeFormatterFactory implements FactoryInterface
 
         $processor = new Processor(new Extractor(), new Parser());
 
-        foreach($tags as $key => $tag) {
+        foreach ($tags as $key => $tag) {
             $processor->addHandler($key, $tag);
         }
 
-        foreach($aliases as $key => $alias) {
+        foreach ($aliases as $key => $alias) {
             $processor->addHandlerAlias($key, $alias);
         }
 
@@ -47,7 +46,5 @@ class BbcodeFormatterFactory implements FactoryInterface
         $processor->setRecursionDepth($maxDepth);
 
         return new BbcodeFormatter($processor);
-
     }
-
 }

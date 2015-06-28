@@ -94,6 +94,4 @@ class Message implements MessageInterface
     {
         $this->formatter = $formatter;
     }
-
-
 }

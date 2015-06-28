@@ -9,7 +9,6 @@
 namespace Eoko\Console\Renderer;
 
 use Eoko\Console\Engine\EngineInterface;
-use Eoko\Console\Formatter\FormatterInterface;
 
 interface RendererInterface
 {

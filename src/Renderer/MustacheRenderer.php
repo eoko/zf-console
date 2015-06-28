@@ -9,8 +9,6 @@
 namespace Eoko\Console\Renderer;
 
 use Eoko\Console\Engine\EngineInterface;
-use Eoko\Console\Formatter\FormatterInterface;
-use Eoko\Console\Formatter\SimpleFormatter;
 
 class MustacheRenderer implements RendererInterface
 {

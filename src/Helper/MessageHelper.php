@@ -41,7 +41,7 @@ class MessageHelper
         $fgColor = (isset($attributes['fg'])) ? self::getColorCode($attributes['fg']) : null;
         $bgColor = (isset($attributes['bg'])) ? self::getColorCode($attributes['bg']) : null;
 
-        if(isset(self::$mapShortcodeToColor[$shortcode->getName()])) {
+        if (isset(self::$mapShortcodeToColor[$shortcode->getName()])) {
             $fgColor = self::$mapShortcodeToColor[$shortcode->getName()];
         }
 
@@ -52,7 +52,8 @@ class MessageHelper
         return Console::getInstance()->colorize($content, $fgColor, $bgColor);
     }
 
-    public static function bip() {
+    public static function bip()
+    {
         return "\x07";
     }
 

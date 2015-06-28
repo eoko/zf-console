@@ -11,7 +11,6 @@ namespace Eoko\ConsoleTest;
 use Eoko\Console\Engine\MustacheEngine;
 use Eoko\Console\Engine\MustacheEngineFactory;
 use Eoko\Console\Factory\BbcodeFormatterFactory;
-use Eoko\Console\Formatter\ShortCodeFormatterFactory;
 use Eoko\Console\Helper\MessageHelper;
 use Eoko\Console\Message\MessageFactory;
 use Eoko\Console\Renderer\MustacheRenderer;

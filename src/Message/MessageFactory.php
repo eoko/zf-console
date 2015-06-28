@@ -8,7 +8,6 @@
 
 namespace Eoko\Console\Message;
 
-use Eoko\Console\Formatter\FormatterInterface;
 use Eoko\Console\Formatter\SimpleFormatter;
 use Eoko\Console\Renderer\SimpleRenderer;
 use Zend\Console\Console;

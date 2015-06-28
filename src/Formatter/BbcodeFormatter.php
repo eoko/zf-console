@@ -8,15 +8,15 @@
 
 namespace Eoko\Console\Formatter;
 
-
 use Thunder\Shortcode\ShortcodeFacade;
 
-class BbcodeFormatter implements FormatterInterface {
+class BbcodeFormatter implements FormatterInterface
+{
 
     /** @var  ShortcodeFacade */
     protected $formatter;
 
-    function __construct($formatter)
+    public function __construct($formatter)
     {
         $this->formatter = $formatter;
     }
@@ -29,6 +29,4 @@ class BbcodeFormatter implements FormatterInterface {
     {
         return $this->formatter->process($content);
     }
-
-
 }
