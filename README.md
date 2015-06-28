@@ -1,7 +1,7 @@
 # Zf-Console
 
-[![Build Status](https://travis-ci.org/iam-merlin/zf-console.svg?branch=master)](https://travis-ci.org/iam-merlin/zf-console)
-[![Coverage Status](https://coveralls.io/repos/iam-merlin/zf-console/badge.svg)](https://coveralls.io/r/iam-merlin/zf-console)
+[![Build Status](https://travis-ci.org/eoko/zf-console.svg?branch=master)](https://travis-ci.org/eoko/zf-console)
+[![Coverage Status](https://coveralls.io/repos/eoko/zf-console/badge.svg)](https://coveralls.io/r/eoko/zf-console)
 
 ## Goals
 
