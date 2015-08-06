@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/eoko/zf-console.svg?branch=master)](https://travis-ci.org/eoko/zf-console)
 [![Coverage Status](https://coveralls.io/repos/eoko/zf-console/badge.svg)](https://coveralls.io/r/eoko/zf-console)
+[![Eoko Public Channel](http://slackin.eoko.fr/badge.svg)](http://slackin.eoko.fr/)
 
 ## Goals
 
